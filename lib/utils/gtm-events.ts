@@ -190,10 +190,6 @@ export function trackViewPromotion(
 
 // ── Non-ecommerce events ──────────────────────────────────────────────────────
 
-export function trackPageView(url: string) {
-  sendGTMEvent({ event: "page_view", page_location: url });
-}
-
 export function trackSearch(searchTerm: string) {
   sendGTMEvent({ event: "search", search_term: searchTerm });
 }
