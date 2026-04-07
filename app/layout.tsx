@@ -8,7 +8,6 @@ import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
 import GoogleTagManagerLoader from "@/components/GoogleTagManager";
 import { WebVitals } from "@/components/WebVitals";
-import { PageView } from "@/components/PageView";
 import { JsonLdScript } from "@/components/ui/json-ld-script";
 import "./globals.css";
 
@@ -86,9 +85,6 @@ export default function RootLayout({
             {/* GTM via @next/third-parties — loads after hydration */}
             <GoogleTagManagerLoader />
             <WebVitals />
-            <Suspense>
-              <PageView />
-            </Suspense>
             <JsonLdScript
               data={{
                 "@context": "https://schema.org",

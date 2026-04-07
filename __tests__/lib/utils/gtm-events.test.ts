@@ -26,7 +26,6 @@ import {
   trackRefund,
   trackSelectPromotion,
   trackViewPromotion,
-  trackPageView,
   trackSearch,
   trackLogin,
   trackSignUp,
@@ -260,17 +259,6 @@ describe("trackViewPromotion", () => {
 });
 
 // ── Non-ecommerce events ──────────────────────────────────────────────────────
-
-describe("trackPageView", () => {
-  it("calls sendGTMEvent once with event and page_location", () => {
-    trackPageView("/shop");
-    expect(mockSend).toHaveBeenCalledTimes(1);
-    expect(mockSend).toHaveBeenCalledWith({
-      event: "page_view",
-      page_location: "/shop",
-    });
-  });
-});
 
 describe("trackSearch", () => {
   it("calls sendGTMEvent once with search_term", () => {
