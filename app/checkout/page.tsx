@@ -81,6 +81,18 @@ export default function CheckoutPage() {
   useEffect(() => {
     const { billing, shipping } = useCheckoutStore.getState();
     methods.reset({ billing, shipping });
+
+    // Validate non-empty persisted fields immediately so that pre-filled but
+    // invalid values (e.g. a saved invalid email) surface errors on page load
+    // without the user having to blur each field first.
+    const toValidate: string[] = [];
+    for (const [k, v] of Object.entries(billing)) {
+      if (typeof v === "string" && v.trim()) toValidate.push(`billing.${k}`);
+    }
+    for (const [k, v] of Object.entries(shipping)) {
+      if (typeof v === "string" && v.trim()) toValidate.push(`shipping.${k}`);
+    }
+    if (toValidate.length) methods.trigger(toValidate as Parameters<typeof methods.trigger>[0]);
     // methods is stable (useForm ref), getState() reads the true current state
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
