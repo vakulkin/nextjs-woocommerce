@@ -1,65 +1,77 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Suspense } from "react";
+import type { Metadata } from "next";
+import { ProductGridSkeleton } from "@/components/product-skeleton";
+import { buttonVariants } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { HeroSection } from "@/components/home/hero-section";
+import { TrustPillars } from "@/components/home/trust-pillars";
+import { BrandStoryCta } from "@/components/home/brand-story-cta";
+import { FeaturedProducts } from "@/components/home/featured-products";
+import { OnSaleProducts } from "@/components/home/on-sale-products";
+import { JsonLdScript } from "@/components/ui/json-ld-script";
 
-export default function Home() {
+export const revalidate = 3600;
+
+export const metadata: Metadata = {
+  title: "LuxuryAroma — Premium Fragrances",
+  description:
+    "Discover an exclusive collection of premium fragrances and luxury perfumes crafted for the discerning connoisseur. Free shipping on orders over £50.",
+  openGraph: {
+    title: "LuxuryAroma — Premium Fragrances",
+    description:
+      "Discover an exclusive collection of premium fragrances and luxury perfumes crafted for the discerning connoisseur.",
+    type: "website",
+    url: "/",
+  },
+  alternates: {
+    canonical: "/",
+  },
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "LuxuryAroma",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL ?? ""}/search?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <JsonLdScript data={websiteJsonLd} />
+      <HeroSection />
+      <TrustPillars />
+      <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
+        <section>
+          <div className="flex items-end justify-between mb-8">
+            <div>
+              <p className="text-xs tracking-[0.3em] uppercase text-[var(--gold)] font-medium mb-1">Hand-Picked</p>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold">Featured Fragrances</h2>
+            </div>
+            <Link href="/shop" className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "text-muted-foreground")}>
+              View All <ArrowRight className="ml-1.5 h-4 w-4" />
+            </Link>
+          </div>
+          <Suspense fallback={<ProductGridSkeleton />}>
+            <FeaturedProducts />
+          </Suspense>
+        </section>
+        <Suspense fallback={null}>
+          <OnSaleProducts />
+        </Suspense>
+      </div>
+      <BrandStoryCta />
+    </>
   );
 }
+
