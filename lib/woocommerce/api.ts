@@ -3,81 +3,24 @@ import type { WooProduct, WooCategory, WooStoreOrder } from "./types";
 const WP_URL = `${process.env.NEXT_PUBLIC_WOOCOMMERCE_PROTCOL}://${process.env.NEXT_PUBLIC_WOOCOMMERCE_HOST}`;
 const STORE_API_URL = `${WP_URL}/wp-json/wc/store/v1`;
 
-// ─── Nonce cache ─────────────────────────────────────────────
-// WordPress nonces for wc_store_api expire after ~12 hours. We cache the value
-// at the module level (per-process) and refresh it when it's older than 10 hrs.
-let cachedNonce: string | null = null;
-let nonceFetchedAt = 0;
-const NONCE_TTL_MS = 10 * 60 * 60 * 1000; // 10 hours
-
-async function getStoreApiNonce(): Promise<string | null> {
-  const now = Date.now();
-  if (cachedNonce && now - nonceFetchedAt < NONCE_TTL_MS) return cachedNonce;
-
-  try {
-    const res = await fetch(`${WP_URL}/wp-json/custom/v1/nonce`, {
-      cache: "no-store",
-    });
-    if (!res.ok) return null;
-    const data = (await res.json()) as { nonce?: string };
-    if (data.nonce) {
-      cachedNonce = data.nonce;
-      nonceFetchedAt = now;
-    }
-    return cachedNonce;
-  } catch {
-    return null;
-  }
-}
-
-/** Build headers for cart-mutating requests (Cart-Token + Nonce). */
-async function cartHeaders(cartToken?: string): Promise<Record<string, string>> {
-  const nonce = await getStoreApiNonce();
+/** Build headers for cart-mutating requests. */
+function cartHeaders(cartToken?: string): Record<string, string> {
   const headers: Record<string, string> = { "Content-Type": "application/json" };
   if (cartToken) headers["Cart-Token"] = cartToken;
-  if (nonce) headers["Nonce"] = nonce;
   return headers;
 }
 
-/**
- * Performs a cart-mutating POST, auto-retrying once if WooCommerce rejects
- * with a missing/invalid nonce. This handles the case where the nonce cache
- * is stale after a hot-reload in dev or a WC session change after checkout.
- */
 async function cartFetch(
   url: string,
   body: unknown,
   cartToken?: string
 ): Promise<Response> {
-  const doFetch = async () => {
-    const headers = await cartHeaders(cartToken);
-    return fetch(url, {
-      method: "POST",
-      headers,
-      body: JSON.stringify(body),
-      cache: "no-store",
-    });
-  };
-
-  const res = await doFetch();
-
-  if (res.status === 401) {
-    try {
-      const text = await res.clone().text();
-      if (
-        text.includes("woocommerce_rest_missing_nonce") ||
-        text.includes("woocommerce_rest_invalid_nonce")
-      ) {
-        cachedNonce = null;
-        nonceFetchedAt = 0;
-        return doFetch();
-      }
-    } catch {
-      // fall through and return original response
-    }
-  }
-
-  return res;
+  return fetch(url, {
+    method: "POST",
+    headers: cartHeaders(cartToken),
+    body: JSON.stringify(body),
+    cache: "no-store",
+  });
 }
 
 async function storeApiFetch<T>(
@@ -210,8 +153,7 @@ export async function getCategories(): Promise<WooCategory[]> {
 // ─── Cart ────────────────────────────────────────────────────
 
 export async function getCartFromServer(cartToken?: string): Promise<Response> {
-  const headers = await cartHeaders(cartToken);
-  return fetch(`${STORE_API_URL}/cart`, { headers, cache: "no-store" });
+  return fetch(`${STORE_API_URL}/cart`, { headers: cartHeaders(cartToken), cache: "no-store" });
 }
 
 export async function addToCartOnServer(
