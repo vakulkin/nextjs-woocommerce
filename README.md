@@ -51,7 +51,7 @@ This project is a modern, headless WooCommerce storefront built with Next.js. It
 
 **Stack:** Next.js, React, Zustand, Zod, Stripe, Jest, Tailwind CSS, TypeScript, WooCommerce
 
-**Required WordPress plugins:** WooCommerce, WooCommerce Blocks, custom nonce endpoint (mu-plugin)
+**Required WordPress plugins:** WooCommerce
 
 **Variable products:** Resolved at the Next.js layer, no theme customization needed
 
