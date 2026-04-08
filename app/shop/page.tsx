@@ -4,7 +4,7 @@ import { ShopSortBar } from "@/components/shop/shop-sort-bar";
 import { ShopProductGrid } from "@/components/shop/shop-product-grid";
 import { ShopPagination } from "@/components/shop/shop-pagination";
 import { ShopParamsSchema } from "@/lib/validation/schemas";
-import { getProductsMeta, getProducts } from "@/lib/woocommerce/api";
+import { getProductsMeta } from "@/lib/woocommerce/api";
 import { productToEcommerceItem } from "@/lib/utils/gtm-items";
 import { JsonLdScript } from "@/components/ui/json-ld-script";
 import { FireGTMEvent } from "@/components/analytics/fire-gtm-event";
@@ -21,7 +21,8 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 3600;
+// No revalidate — searchParams access forces dynamic (SSR) rendering on every request.
+export const dynamic = "force-dynamic";
 
 interface ShopPageProps {
   searchParams: Promise<{
@@ -42,17 +43,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
   const activeOrder = params.order ?? "desc";
   const onSale = params.on_sale === "true";
 
-  const { totalPages } = await getProductsMeta({
-    per_page: 12,
-    page: currentPage,
-    orderby: activeOrderby,
-    order: activeOrder as "asc" | "desc",
-    on_sale: onSale || undefined,
-    category: params.category,
-  });
-
-  // Fetch the same page of products for JSON-LD + view_item_list GTM event
-  const products = await getProducts({
+  const { products, totalPages } = await getProductsMeta({
     per_page: 12,
     page: currentPage,
     orderby: activeOrderby,

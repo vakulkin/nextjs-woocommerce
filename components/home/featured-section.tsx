@@ -7,8 +7,6 @@ import { cn } from "@/lib/utils";
 import { FeaturedProducts } from "@/components/home/featured-products";
 import { t } from "@/lib/i18n";
 
-export const revalidate = 3600;
-
 export function FeaturedSection() {
     return (
         <section>
