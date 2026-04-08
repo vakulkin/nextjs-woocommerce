@@ -249,8 +249,3 @@ export const en: Record<string, string> = {
   "notFound.browseShop": "Browse Shop",
 };
 
-export type TranslationKey = keyof typeof en;
-
-// Keep these exports so existing `import type { Translations } from "@/lib/i18n/en"` still compiles.
-export type Translations = typeof en;
-export type CustomTranslations = Partial<typeof en>;

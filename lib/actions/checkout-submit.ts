@@ -20,15 +20,52 @@ export async function checkoutAction(
   formData: FormData
 ): Promise<CheckoutActionState> {
   // ── Parse raw form data ───────────────────────────────────────────────────
-  let rawBilling: unknown;
-  let rawShipping: unknown;
   let cart: WooCart;
   let paymentMethod: string;
   let cartToken: string | undefined;
+  const sameAsShipping = formData.get("sameAsShipping") === "1";
+
+  const g = (key: string) => String(formData.get(key) ?? "");
+
+  const rawBilling = {
+    first_name: g("billing_first_name"),
+    last_name: g("billing_last_name"),
+    company: g("billing_company"),
+    address_1: g("billing_address_1"),
+    address_2: g("billing_address_2"),
+    city: g("billing_city"),
+    state: g("billing_state"),
+    postcode: g("billing_postcode"),
+    country: g("billing_country"),
+    email: g("billing_email"),
+    phone: g("billing_phone"),
+  };
+
+  const rawShipping = sameAsShipping
+    ? {
+        first_name: rawBilling.first_name,
+        last_name: rawBilling.last_name,
+        company: rawBilling.company,
+        address_1: rawBilling.address_1,
+        address_2: rawBilling.address_2,
+        city: rawBilling.city,
+        state: rawBilling.state,
+        postcode: rawBilling.postcode,
+        country: rawBilling.country,
+      }
+    : {
+        first_name: g("shipping_first_name"),
+        last_name: g("shipping_last_name"),
+        company: g("shipping_company"),
+        address_1: g("shipping_address_1"),
+        address_2: g("shipping_address_2"),
+        city: g("shipping_city"),
+        state: g("shipping_state"),
+        postcode: g("shipping_postcode"),
+        country: g("shipping_country"),
+      };
 
   try {
-    rawBilling = JSON.parse(formData.get("billing") as string);
-    rawShipping = JSON.parse(formData.get("shipping") as string);
     cart = JSON.parse(formData.get("cart") as string) as WooCart;
     paymentMethod = formData.get("paymentMethod") as string;
     cartToken = (formData.get("cartToken") as string) || undefined;
@@ -47,9 +84,7 @@ export async function checkoutAction(
   if (!shippingResult.success) {
     const first = shippingResult.error.issues[0];
     return { type: "error", message: first?.message ?? "Invalid shipping details." };
-  }
-
-  const billing = billingResult.data;
+  }  const billing = billingResult.data;
   const shipping = shippingResult.data;
 
   if (!paymentMethod) {

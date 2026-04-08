@@ -83,7 +83,7 @@ export async function OrderDetails({ orderId, sessionId, orderKey, billingEmail 
   return (
     <>
       {orderJsonLd && <JsonLdScript data={orderJsonLd} />}
-      {purchaseParams && <FireGTMEvent event="purchase" params={purchaseParams} ecommerce />}
+      {purchaseParams && order && <FireGTMEvent event="purchase" params={purchaseParams} ecommerce />}
       <OrderStatusCard state={state} orderId={orderId} stripeError={stripeError} />
       {order && <OrderSummaryCard order={order} />}
     </>

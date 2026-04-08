@@ -1,4 +1,4 @@
-import type { WooProduct, WooCategory, WooStoreOrder } from "./types";
+import type { WooProduct, WooStoreOrder } from "./types";
 
 const WP_URL = `${process.env.NEXT_PUBLIC_WOOCOMMERCE_PROTCOL}://${process.env.NEXT_PUBLIC_WOOCOMMERCE_HOST}`;
 const STORE_API_URL = `${WP_URL}/wp-json/wc/store/v1`;
@@ -140,14 +140,6 @@ export async function getVariationData(variationId: number): Promise<{
 
 export async function searchProducts(query: string): Promise<WooProduct[]> {
   return getProducts({ search: query, per_page: 20 });
-}
-
-// ─── Categories ─────────────────────────────────────────────
-
-export async function getCategories(): Promise<WooCategory[]> {
-  return storeApiFetch<WooCategory[]>("/products/categories", {
-    next: { revalidate: 3600 },
-  });
 }
 
 // ─── Cart ────────────────────────────────────────────────────

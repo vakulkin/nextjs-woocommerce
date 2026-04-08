@@ -9,7 +9,7 @@
  * Standard GTM → GA4 ecommerce pattern:
  *   1. Push { ecommerce: null } to clear any previous ecommerce payload.
  *   2. Push { event, ecommerce: { ...params } } for enhanced ecommerce events.
- *   3. Push { event, ...params } flat for non-ecommerce events (search, login, etc.)
+ *   3. Push { event, ...params } flat for non-ecommerce events.
  */
 
 import { sendGTMEvent } from "@next/third-parties/google";
@@ -38,7 +38,6 @@ export interface WebVitalsMetric {
 
 export function reportWebVitals(metric: WebVitalsMetric): void {
   if (process.env.NODE_ENV === "development") {
-    // eslint-disable-next-line no-console
     console.info("Web Vitals (dev):", metric.name, metric.value, metric.rating);
     return;
   }

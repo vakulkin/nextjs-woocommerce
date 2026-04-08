@@ -61,11 +61,26 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
     >
-      {/* Initialize window.dataLayer before any client component mounts so
-          sendGTMEvent calls are never lost, even before GTM script loads. */}
-      {/* <head>
-        <script dangerouslySetInnerHTML={{ __html: "window.dataLayer=window.dataLayer||[];" }} />
-      </head> */}
+      <head>
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,l){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});})(window,'dataLayer');`,
+            }}
+          />
+        )}
+        <GoogleTagManagerLoader />
+        <WebVitals />
+        <JsonLdScript
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: t('brand.name'),
+            url: process.env.NEXT_PUBLIC_SITE_URL ?? "",
+            description: t('brand.description'),
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider
           attribute="class"
@@ -78,18 +93,6 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <Toaster />
-          {/* GTM via @next/third-parties — loads after hydration */}
-          <GoogleTagManagerLoader />
-          <WebVitals />
-          <JsonLdScript
-            data={{
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: t('brand.name'),
-              url: process.env.NEXT_PUBLIC_SITE_URL ?? "",
-              description: t('brand.description'),
-            }}
-          />
         </ThemeProvider>
       </body>
     </html>

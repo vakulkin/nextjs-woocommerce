@@ -30,9 +30,7 @@ async function SearchResults({ query }: { query: string }) {
     return (
       <>
         <FireGTMEvent event="search" params={{ search_term: query }} />
-        <p className="text-center text-muted-foreground py-12">
           {t('search.noResults')} &quot;{query}&quot;. {t('search.tryDifferent')}
-        </p>
       </>
     );
   }
