@@ -82,7 +82,7 @@ export async function updateWooOrderStatus(
   const cs = process.env.WC_CONSUMER_SECRET;
   if (!ck || !cs) throw new Error("WC_CONSUMER_KEY / WC_CONSUMER_SECRET not set");
 
-  const base = process.env.NEXT_PUBLIC_WOOCOMMERCE_URL;
+  const base = process.env.NEXT_PUBLIC_WOOCOMMERCE_PROTCOL + "://" + process.env.NEXT_PUBLIC_WOOCOMMERCE_HOST;
   const url = `${base}/wp-json/wc/v3/orders/${orderId}?consumer_key=${ck}&consumer_secret=${cs}`;
 
   const res = await fetch(url, {
