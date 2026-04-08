@@ -89,7 +89,7 @@ export function ProductInfo({ product, initialVariationId, initialVariationPrice
           <>
             <span className="text-base text-muted-foreground line-through">{regular}</span>
             <Badge className="bg-[var(--gold)] text-white border-0 hover:bg-[var(--gold)] text-[10px] tracking-wider uppercase">
-              {t.product.savePct} {savingsPct}%
+              {t('product.savePct')} {savingsPct}%
             </Badge>
           </>
         )}
@@ -97,7 +97,7 @@ export function ProductInfo({ product, initialVariationId, initialVariationPrice
 
       {!initialVariationPrices && product.prices.price_range && (
         <p className="text-sm text-muted-foreground">
-          {t.product.priceFrom}{" "}
+          {t('product.priceFrom')}{" "}
           {
             formatProductPrice({
               ...product.prices,
@@ -119,12 +119,12 @@ export function ProductInfo({ product, initialVariationId, initialVariationPrice
         {variationInStock ? (
           <span className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-700 dark:text-emerald-400">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
-            {t.product.inStock}
+            {t('product.inStock')}
           </span>
         ) : (
           <span className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground" aria-hidden="true" />
-            {t.product.outOfStock}
+            {t('product.outOfStock')}
           </span>
         )}
         {product.low_stock_remaining && (
@@ -155,10 +155,10 @@ export function ProductInfo({ product, initialVariationId, initialVariationPrice
       {/* Trust badges */}
       <div className="grid grid-cols-2 gap-3 pt-1">
         {([
-          { Icon: Truck, label: t.product.freeShipping, sub: t.product.freeShippingSub },
-          { Icon: RotateCcw, label: t.product.returns, sub: t.product.returnsSub },
-          { Icon: ShieldCheck, label: t.product.secureCheckout, sub: t.product.secureCheckoutSub },
-          { Icon: Award, label: t.product.authenticity, sub: t.product.authenticitySub },
+          { Icon: Truck, label: t('product.freeShipping'), sub: t('product.freeShippingSub') },
+          { Icon: RotateCcw, label: t('product.returns'), sub: t('product.returnsSub') },
+          { Icon: ShieldCheck, label: t('product.secureCheckout'), sub: t('product.secureCheckoutSub') },
+          { Icon: Award, label: t('product.authenticity'), sub: t('product.authenticitySub') },
         ] as const).map(({ Icon, label, sub }) => (
           <div key={label} className="flex items-start gap-2">
             <Icon className="h-4 w-4 mt-0.5 shrink-0 text-[var(--gold)]" aria-hidden="true" />
@@ -173,7 +173,7 @@ export function ProductInfo({ product, initialVariationId, initialVariationPrice
       {/* Meta */}
       <div className="space-y-1.5 pt-1">
         {product.sku && (
-          <p className="text-xs text-muted-foreground">{t.product.sku} {product.sku}</p>
+          <p className="text-xs text-muted-foreground">{t('product.sku')} {product.sku}</p>
         )}
         {product.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 pt-1">

@@ -4,23 +4,23 @@ import { t } from "@/lib/i18n";
 const TRUST_PILLARS = [
   {
     icon: Leaf,
-    title: t.home.trust.natural.title,
-    desc: t.home.trust.natural.desc,
+    title: t('home.trust.natural.title'),
+    desc: t('home.trust.natural.desc'),
   },
   {
     icon: Sparkles,
-    title: t.home.trust.crafted.title,
-    desc: t.home.trust.crafted.desc,
+    title: t('home.trust.crafted.title'),
+    desc: t('home.trust.crafted.desc'),
   },
   {
     icon: ShieldCheck,
-    title: t.home.trust.quality.title,
-    desc: t.home.trust.quality.desc,
+    title: t('home.trust.quality.title'),
+    desc: t('home.trust.quality.desc'),
   },
   {
     icon: Truck,
-    title: t.home.trust.shipping.title,
-    desc: t.home.trust.shipping.desc,
+    title: t('home.trust.shipping.title'),
+    desc: t('home.trust.shipping.desc'),
   },
 ];
 

@@ -24,7 +24,7 @@ export function CartSheet() {
 
   return (
     <Sheet open={isCartOpen} onOpenChange={(v) => (v ? openCart() : closeCart())}>
-      <SheetTrigger render={<Button variant="ghost" size="icon" className="relative" aria-label={t.header.openCart} />}>
+      <SheetTrigger render={<Button variant="ghost" size="icon" className="relative" aria-label={t('header.openCart')} />}>
         <ShoppingBag className="h-5 w-5" />
         {itemCount > 0 && (
           <Badge
@@ -40,7 +40,7 @@ export function CartSheet() {
         <SheetHeader className="px-6 py-5 border-b border-border/50">
           <div className="flex items-center justify-between">
             <SheetTitle className="font-heading text-lg tracking-wide">
-              {t.cart.sheetTitle}
+              {t('cart.sheetTitle')}
               {itemCount > 0 && (
                 <span className="ml-2 text-sm font-normal text-muted-foreground">({itemCount})</span>
               )}
@@ -52,14 +52,14 @@ export function CartSheet() {
           <div className="flex-1 flex items-center justify-center">
             <div className="text-center px-8">
               <ShoppingBag className="mx-auto h-12 w-12 text-muted-foreground/40 mb-4" />
-              <p className="font-heading text-base mb-1">{t.cart.emptyTitle}</p>
-              <p className="text-sm text-muted-foreground mb-6">{t.cart.emptySheetHint}</p>
+              <p className="font-heading text-base mb-1">{t('cart.emptyTitle')}</p>
+              <p className="text-sm text-muted-foreground mb-6">{t('cart.emptySheetHint')}</p>
               <Link
                 href="/shop"
                 className={cn(buttonVariants({ variant: "outline" }), "w-full")}
                 onClick={closeCart}
               >
-                {t.cart.shopAll}
+                {t('cart.shopAll')}
               </Link>
             </div>
           </div>
@@ -97,7 +97,7 @@ export function CartSheet() {
                           className="h-6 w-6 shrink-0 text-muted-foreground hover:text-foreground"
                           onClick={() => removeItem(item.key)}
                           disabled={isPending}
-                          aria-label={t.cart.removeItem}
+                          aria-label={t('cart.removeItem')}
                         >
                           <X className="h-3.5 w-3.5" />
                         </Button>
@@ -151,14 +151,14 @@ export function CartSheet() {
                 className={cn(buttonVariants({ size: "lg" }), "w-full")}
                 onClick={closeCart}
               >
-                {t.cart.proceedToCheckout}
+                {t('cart.proceedToCheckout')}
               </Link>
               <Link
                 href="/cart"
                 className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "w-full text-muted-foreground")}
                 onClick={closeCart}
               >
-                {t.cart.viewFullCart}
+                {t('cart.viewFullCart')}
               </Link>
             </div>
           </>

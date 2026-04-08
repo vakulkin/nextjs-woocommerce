@@ -29,7 +29,7 @@ export function WishlistButton({ product, className, size = "default" }: Wishlis
       trackAddToWishlist(productToEcommerceItem(product), product.prices.currency_code);
     }
     toggle(product);
-    toast(!wishlisted ? t.wishlist.savedToast : t.wishlist.removedToast);
+    toast(!wishlisted ? t('wishlist.savedToast') : t('wishlist.removedToast'));
   }
 
   return (
@@ -45,7 +45,7 @@ export function WishlistButton({ product, className, size = "default" }: Wishlis
         className
       )}
       onClick={handleClick}
-      aria-label={wishlisted ? t.wishlist.removeAriaLabel : t.wishlist.addAriaLabel}
+      aria-label={wishlisted ? t('wishlist.removeAriaLabel') : t('wishlist.addAriaLabel')}
       aria-pressed={wishlisted}
     >
       <Heart

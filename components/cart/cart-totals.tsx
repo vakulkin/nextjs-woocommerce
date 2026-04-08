@@ -34,27 +34,27 @@ export function CartTotals({ totals, separatorClassName }: CartTotalsProps) {
     <>
       <div className="space-y-2 text-sm">
         <div className="flex justify-between">
-          <span className="text-muted-foreground">{t.cart.subtotal}</span>
+          <span className="text-muted-foreground">{t('cart.subtotal')}</span>
           <span>{fmt(totals.total_items)}</span>
         </div>
 
         {parseInt(totals.total_shipping) > 0 && (
           <div className="flex justify-between">
-            <span className="text-muted-foreground">{t.cart.shipping}</span>
+            <span className="text-muted-foreground">{t('cart.shipping')}</span>
             <span>{fmt(totals.total_shipping)}</span>
           </div>
         )}
 
         {totals.total_discount && parseInt(totals.total_discount) > 0 && (
           <div className="flex justify-between text-green-600 dark:text-green-400">
-            <span>{t.cart.discount}</span>
+            <span>{t('cart.discount')}</span>
             <span>-{fmt(totals.total_discount)}</span>
           </div>
         )}
 
         {parseInt(totals.total_tax) > 0 && (
           <div className="flex justify-between">
-            <span className="text-muted-foreground">{t.cart.tax}</span>
+            <span className="text-muted-foreground">{t('cart.tax')}</span>
             <span>{fmt(totals.total_tax)}</span>
           </div>
         )}
@@ -63,7 +63,7 @@ export function CartTotals({ totals, separatorClassName }: CartTotalsProps) {
       <Separator className={separatorClassName} />
 
       <div className="flex justify-between font-semibold text-base">
-        <span>{t.cart.total}</span>
+        <span>{t('cart.total')}</span>
         <span>{fmt(totals.total_price)}</span>
       </div>
     </>

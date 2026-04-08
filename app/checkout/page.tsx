@@ -141,7 +141,7 @@ export default function CheckoutPage() {
       startShippingTransition(async () => {
         const result = await selectShippingRate(packageId, rateId, useCartStore.getState().cartToken);
         if (result.error) {
-          toast.error(t.checkout.failedShipping);
+          toast.error(t('checkout.failedShipping'));
           console.error("Shipping rate error:", result.error);
           return;
         }
@@ -197,8 +197,8 @@ export default function CheckoutPage() {
   if (isLoading) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-heading font-bold mb-8">{t.checkout.pageTitle}</h1>
-        <p className="text-muted-foreground">{t.checkout.loadingCart}</p>
+        <h1 className="text-3xl font-heading font-bold mb-8">{t('checkout.pageTitle')}</h1>
+        <p className="text-muted-foreground">{t('checkout.loadingCart')}</p>
       </div>
     );
   }
@@ -208,13 +208,13 @@ export default function CheckoutPage() {
       <div className="container mx-auto px-4 py-16 text-center">
         <ShoppingCart className="mx-auto h-16 w-16 text-muted-foreground" />
         <h1 className="text-3xl font-heading font-bold mt-4">
-          {t.checkout.emptyTitle}
+          {t('checkout.emptyTitle')}
         </h1>
         <p className="text-muted-foreground mt-2">
-          {t.checkout.emptyHint}
+          {t('checkout.emptyHint')}
         </p>
         <Link href="/shop" className={cn(buttonVariants({ size: "lg" }), "mt-6")}>
-          {t.checkout.continueShopping}
+          {t('checkout.continueShopping')}
         </Link>
       </div>
     );
@@ -222,7 +222,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-heading font-bold mb-8">{t.checkout.pageTitle}</h1>
+      <h1 className="text-3xl font-heading font-bold mb-8">{t('checkout.pageTitle')}</h1>
 
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} noValidate>

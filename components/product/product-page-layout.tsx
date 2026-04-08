@@ -10,6 +10,7 @@ import { productToEcommerceItem } from "@/lib/utils/gtm-items";
 import { JsonLdScript } from "@/components/ui/json-ld-script";
 import { FireGTMEvent } from "@/components/analytics/fire-gtm-event";
 import type { WooProduct } from "@/lib/woocommerce/types";
+import { t } from "@/lib/i18n";
 
 export interface ProductPageData {
   product: WooProduct;
@@ -34,7 +35,7 @@ function buildProductJsonLd(
     description: stripHtml(product.short_description || product.description),
     image: product.images.map((i) => i.src),
     sku: product.sku,
-    brand: { "@type": "Brand", name: "LuxuryAroma" },
+    brand: { "@type": "Brand", name: t('brand.name') },
     offers: {
       "@type": "Offer",
       price: priceAmt.toFixed(prices.currency_minor_unit),

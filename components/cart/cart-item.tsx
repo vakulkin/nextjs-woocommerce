@@ -30,7 +30,7 @@ export function CartItem({ item }: CartItemProps) {
           />
         ) : (
           <div className="flex h-full items-center justify-center text-xs text-muted-foreground">
-            {t.cart.noImageFull}
+            {t('cart.noImageFull')}
           </div>
         )}
       </div>
@@ -89,7 +89,7 @@ export function CartItem({ item }: CartItemProps) {
                 removeItem(item.key);
               }}
               disabled={isPending}
-              aria-label={t.cart.removeItem}
+              aria-label={t('cart.removeItem')}
             >
               <Trash2 className="h-4 w-4" />
             </Button>

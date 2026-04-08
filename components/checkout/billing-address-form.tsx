@@ -8,7 +8,7 @@ export function BillingAddressForm() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{t.checkout.billingTitle}</CardTitle>
+        <CardTitle>{t('checkout.billingTitle')}</CardTitle>
       </CardHeader>
       <CardContent>
         <AddressFields namePrefix="billing" showContactFields />

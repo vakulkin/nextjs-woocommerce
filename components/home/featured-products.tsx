@@ -10,7 +10,7 @@ export async function FeaturedProducts() {
   if (displayProducts.length === 0) {
     return (
       <p className="text-center text-muted-foreground py-12">
-        {t.home.featured.noProducts}
+        {t('home.featured.noProducts')}
       </p>
     );
   }

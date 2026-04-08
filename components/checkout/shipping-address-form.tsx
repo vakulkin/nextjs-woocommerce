@@ -11,7 +11,7 @@ export function ShippingAddressForm() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{t.checkout.shippingTitle}</CardTitle>
+        <CardTitle>{t('checkout.shippingTitle')}</CardTitle>
       </CardHeader>
       <CardContent>
         <label className="flex items-center gap-2 cursor-pointer mb-4">
@@ -21,7 +21,7 @@ export function ShippingAddressForm() {
             onChange={(e) => setSameAsShipping(e.target.checked)}
             className="h-4 w-4 rounded border-input"
           />
-          <span className="text-sm">{t.checkout.sameAsBilling}</span>
+          <span className="text-sm">{t('checkout.sameAsBilling')}</span>
         </label>
 
         {!sameAsShipping && <AddressFields namePrefix="shipping" />}

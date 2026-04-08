@@ -8,13 +8,14 @@ import { getProductsMeta, getProducts } from "@/lib/woocommerce/api";
 import { productToEcommerceItem } from "@/lib/utils/gtm-items";
 import { JsonLdScript } from "@/components/ui/json-ld-script";
 import { FireGTMEvent } from "@/components/analytics/fire-gtm-event";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Shop All Fragrances",
-  description: "Browse our complete collection of premium fragrances, luxury perfumes, and exclusive scents.",
+  title: t('shop.title'),
+  description: t('shop.description'),
   openGraph: {
-    title: "Shop All Fragrances",
-    description: "Browse our complete collection of premium fragrances, luxury perfumes, and exclusive scents.",
+    title: t('shop.title'),
+    description: t('shop.description'),
     type: "website",
     url: "/shop",
   },

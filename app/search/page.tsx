@@ -31,7 +31,7 @@ async function SearchResults({ query }: { query: string }) {
       <>
         <FireGTMEvent event="search" params={{ search_term: query }} />
         <p className="text-center text-muted-foreground py-12">
-          {t.search.noResults} &quot;{query}&quot;. {t.search.tryDifferent}
+          {t('search.noResults')} &quot;{query}&quot;. {t('search.tryDifferent')}
         </p>
       </>
     );
@@ -82,7 +82,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-heading font-bold">{t.search.pageTitle}</h1>
+        <h1 className="text-3xl font-heading font-bold">{t('search.pageTitle')}</h1>
         <div className="mt-4 max-w-md">
           <SearchBar />
         </div>
@@ -94,7 +94,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         </Suspense>
       ) : (
         <p className="text-center text-muted-foreground py-12">
-          {t.search.enterTerm}
+          {t('search.enterTerm')}
         </p>
       )}
     </div>

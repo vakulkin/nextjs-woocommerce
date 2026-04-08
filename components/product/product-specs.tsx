@@ -11,9 +11,9 @@ export function ProductSpecs({ attributes }: ProductSpecsProps) {
 
   return (
     <div className="mt-12 max-w-lg">
-      <h2 className="text-xl font-heading font-bold mb-2">{t.productSpecs.title}</h2>
+      <h2 className="text-xl font-heading font-bold mb-2">{t('productSpecs.title')}</h2>
       <Separator className="mb-4 border-border/50" />
-      <table className="w-full text-sm" aria-label={t.productSpecs.ariaLabel}>
+      <table className="w-full text-sm" aria-label={t('productSpecs.ariaLabel')}>
         <tbody>
           {attributes.map((attr) => (
             <tr key={attr.name} className="border-b border-border/40">
@@ -21,7 +21,7 @@ export function ProductSpecs({ attributes }: ProductSpecsProps) {
                 {attr.name}
               </td>
               <td className="py-3 text-sm">
-                {attr.terms.map((t) => t.name).join(", ")}
+                {attr.terms.map((term) => term.name).join(", ")}
               </td>
             </tr>
           ))}

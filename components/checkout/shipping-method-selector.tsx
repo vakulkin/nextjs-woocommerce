@@ -23,7 +23,7 @@ export function ShippingMethodSelector({
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Truck className="h-5 w-5" />
-          {t.checkout.shippingMethodTitle}
+          {t('checkout.shippingMethodTitle')}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
@@ -64,7 +64,7 @@ export function ShippingMethodSelector({
                 </div>
                 <span className="text-sm font-medium shrink-0">
                   {parseInt(rate.price) === 0
-                    ? t.checkout.freeShipping
+                    ? t('checkout.freeShipping')
                     : formatPrice(
                         rate.price,
                         rate.currency_minor_unit,

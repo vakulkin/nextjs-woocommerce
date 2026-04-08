@@ -30,9 +30,9 @@ async function ProductList({ searchParams }: ShopProductGridProps) {
   if (products.length === 0) {
     return (
       <div className="col-span-full text-center py-24">
-        <p className="text-muted-foreground">{t.shop.noProducts}</p>
+        <p className="text-muted-foreground">{t('shop.noProducts')}</p>
         <Link href="/shop" className={cn(buttonVariants({ variant: "outline" }), "mt-4")}>
-          {t.shop.clearOnSale}
+          {t('shop.clearOnSale')}
         </Link>
       </div>
     );

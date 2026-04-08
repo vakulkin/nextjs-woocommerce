@@ -42,10 +42,10 @@ export function ShopPagination({ currentPage, totalPages, searchParams }: ShopPa
   }
 
   return (
-    <nav className="flex justify-center items-center gap-1 mt-12" aria-label={t.shop.paginationLabel}>
+    <nav className="flex justify-center items-center gap-1 mt-12" aria-label={t('shop.paginationLabel')}>
       {/* First */}
       {currentPage > 1 ? (
-        <Link href={pageUrl(1, searchParams)} className={btnGhost} aria-label={t.shop.paginationFirst}>
+        <Link href={pageUrl(1, searchParams)} className={btnGhost} aria-label={t('shop.paginationFirst')}>
           <ChevronsLeft className="h-4 w-4" />
         </Link>
       ) : (
@@ -54,7 +54,7 @@ export function ShopPagination({ currentPage, totalPages, searchParams }: ShopPa
 
       {/* Prev */}
       {currentPage > 1 ? (
-        <Link href={pageUrl(currentPage - 1, searchParams)} className={btnGhost} aria-label={t.shop.paginationPrev}>
+        <Link href={pageUrl(currentPage - 1, searchParams)} className={btnGhost} aria-label={t('shop.paginationPrev')}>
           <ChevronLeft className="h-4 w-4" />
         </Link>
       ) : (
@@ -81,7 +81,7 @@ export function ShopPagination({ currentPage, totalPages, searchParams }: ShopPa
 
       {/* Next */}
       {currentPage < totalPages ? (
-        <Link href={pageUrl(currentPage + 1, searchParams)} className={btnGhost} aria-label={t.shop.paginationNext}>
+        <Link href={pageUrl(currentPage + 1, searchParams)} className={btnGhost} aria-label={t('shop.paginationNext')}>
           <ChevronRight className="h-4 w-4" />
         </Link>
       ) : (
@@ -90,7 +90,7 @@ export function ShopPagination({ currentPage, totalPages, searchParams }: ShopPa
 
       {/* Last */}
       {currentPage < totalPages ? (
-        <Link href={pageUrl(totalPages, searchParams)} className={btnGhost} aria-label={t.shop.paginationLast}>
+        <Link href={pageUrl(totalPages, searchParams)} className={btnGhost} aria-label={t('shop.paginationLast')}>
           <ChevronsRight className="h-4 w-4" />
         </Link>
       ) : (

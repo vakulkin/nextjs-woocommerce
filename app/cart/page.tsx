@@ -26,7 +26,7 @@ export default function CartPage() {
   if (isLoading) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-heading font-bold mb-8">{t.cart.pageTitle}</h1>
+        <h1 className="text-3xl font-heading font-bold mb-8">{t('cart.pageTitle')}</h1>
         <div className="space-y-4">
           {Array.from({ length: 3 }).map((_, i) => (
             <div key={i} className="flex gap-4">
@@ -47,13 +47,13 @@ export default function CartPage() {
       <div className="container mx-auto px-4 py-16 text-center">
         <ShoppingCart className="mx-auto h-16 w-16 text-muted-foreground" />
         <h1 className="text-3xl font-heading font-bold mt-4">
-          {t.cart.emptyTitle}
+          {t('cart.emptyTitle')}
         </h1>
         <p className="text-muted-foreground mt-2">
-          {t.cart.emptyHint}
+          {t('cart.emptyHint')}
         </p>
         <Link href="/shop" className={cn(buttonVariants({ size: "lg" }), "mt-6")}>
-          {t.cart.continueShopping}
+          {t('cart.continueShopping')}
         </Link>
       </div>
     );
@@ -62,7 +62,7 @@ export default function CartPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-heading font-bold mb-8">
-        {t.cart.pageTitle} ({itemCount})
+        {t('cart.pageTitle')} ({itemCount})
       </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

@@ -26,9 +26,9 @@ export async function RelatedProducts({ categorySlug, currentId }: RelatedProduc
       <div className="flex items-center justify-between mb-6">
         <div>
           <p className="text-xs tracking-[0.25em] uppercase text-[var(--gold)] font-medium mb-1">
-            {t.relatedProducts.eyebrow}
+            {t('relatedProducts.eyebrow')}
           </p>
-          <h2 className="text-2xl font-heading font-bold">{t.relatedProducts.title}</h2>
+          <h2 className="text-2xl font-heading font-bold">{t('relatedProducts.title')}</h2>
         </div>
         <Link
           href={`/shop?category=${categorySlug}`}
@@ -37,7 +37,7 @@ export async function RelatedProducts({ categorySlug, currentId }: RelatedProduc
             "text-muted-foreground gap-1.5"
           )}
         >
-          {t.home.onSale.viewAll} <ArrowRight className="h-3.5 w-3.5" />
+          {t('home.onSale.viewAll')} <ArrowRight className="h-3.5 w-3.5" />
         </Link>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-8">

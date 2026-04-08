@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
-import { Suspense } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CartStoreInitializer } from "@/components/cart-store-initializer";
 import { Header } from "@/components/header";
@@ -9,6 +8,7 @@ import { Toaster } from "@/components/ui/sonner";
 import GoogleTagManagerLoader from "@/components/GoogleTagManager";
 import { WebVitals } from "@/components/WebVitals";
 import { JsonLdScript } from "@/components/ui/json-ld-script";
+import { t } from "@/lib/i18n";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,28 +29,24 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://luxuryaroma.com"
+    process.env.NEXT_PUBLIC_SITE_URL ?? ''
   ),
   title: {
-    default: "LuxuryAroma — Premium Fragrances",
-    template: "%s | LuxuryAroma",
+    default: t('brand.name'),
+    template: "%s | " + t('brand.name'),
   },
   description:
-    "Discover premium fragrances crafted for the discerning connoisseur at LuxuryAroma.",
+    t('brand.description'),
   openGraph: {
     type: "website",
-    siteName: "LuxuryAroma",
+    siteName: t('brand.name'),
     locale: "en_US",
     title: {
-      default: "LuxuryAroma — Premium Fragrances",
-      template: "%s | LuxuryAroma",
+      default: t('brand.name') + " — " + t('brand.tagline'),
+      template: "%s | " + t('brand.name'),
     },
     description:
-      "Discover premium fragrances crafted for the discerning connoisseur at LuxuryAroma.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@luxuryaroma",
+      t('brand.description')
   },
 };
 
@@ -61,7 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang={t('lang')}
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
     >
@@ -78,22 +74,22 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CartStoreInitializer />
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <Toaster />
-            {/* GTM via @next/third-parties — loads after hydration */}
-            <GoogleTagManagerLoader />
-            <WebVitals />
-            <JsonLdScript
-              data={{
-                "@context": "https://schema.org",
-                "@type": "Organization",
-                name: "LuxuryAroma",
-                url: process.env.NEXT_PUBLIC_SITE_URL ?? "",
-                description: "Premium fragrances crafted for the discerning connoisseur.",
-              }}
-            />
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <Toaster />
+          {/* GTM via @next/third-parties — loads after hydration */}
+          <GoogleTagManagerLoader />
+          <WebVitals />
+          <JsonLdScript
+            data={{
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: t('brand.name'),
+              url: process.env.NEXT_PUBLIC_SITE_URL ?? "",
+              description: t('brand.description'),
+            }}
+          />
         </ThemeProvider>
       </body>
     </html>

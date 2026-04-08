@@ -17,7 +17,7 @@ export function OrderSummaryCard({ order }: OrderSummaryCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg">{t.orderConfirmation.orderSummaryTitle}</CardTitle>
+        <CardTitle className="text-lg">{t('orderConfirmation.orderSummaryTitle')}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {/* Items */}
@@ -38,7 +38,7 @@ export function OrderSummaryCard({ order }: OrderSummaryCardProps) {
                 )}
                 <div className="flex-1 min-w-0">
                   <p className="font-medium truncate">{item.name}</p>
-                  <p className="text-sm text-muted-foreground">{t.orderConfirmation.qty} {item.quantity}</p>
+                  <p className="text-sm text-muted-foreground">{t('orderConfirmation.qty')} {item.quantity}</p>
                 </div>
                 <p className="font-medium whitespace-nowrap">
                   {formatPrice(
@@ -58,24 +58,24 @@ export function OrderSummaryCard({ order }: OrderSummaryCardProps) {
         {/* Totals */}
         <div className="space-y-1 text-sm">
           <div className="flex justify-between">
-            <span className="text-muted-foreground">{t.orderConfirmation.subtotal}</span>
+            <span className="text-muted-foreground">{t('orderConfirmation.subtotal')}</span>
             <span>{fmt(totals.total_items)}</span>
           </div>
           {parseInt(totals.total_discount, 10) > 0 && (
             <div className="flex justify-between text-green-600">
-              <span>{t.orderConfirmation.discount}</span>
+              <span>{t('orderConfirmation.discount')}</span>
               <span>−{fmt(totals.total_discount)}</span>
             </div>
           )}
           {parseInt(totals.total_shipping, 10) > 0 && (
             <div className="flex justify-between">
-              <span className="text-muted-foreground">{t.orderConfirmation.shipping}</span>
+              <span className="text-muted-foreground">{t('orderConfirmation.shipping')}</span>
               <span>{fmt(totals.total_shipping)}</span>
             </div>
           )}
           {parseInt(totals.total_tax, 10) > 0 && (
             <div className="flex justify-between">
-              <span className="text-muted-foreground">{t.orderConfirmation.tax}</span>
+              <span className="text-muted-foreground">{t('orderConfirmation.tax')}</span>
               <span>{fmt(totals.total_tax)}</span>
             </div>
           )}
@@ -84,7 +84,7 @@ export function OrderSummaryCard({ order }: OrderSummaryCardProps) {
         <Separator />
 
         <div className="flex justify-between font-semibold text-base">
-          <span>{t.orderConfirmation.total}</span>
+          <span>{t('orderConfirmation.total')}</span>
           <span>{fmt(totals.total_price)}</span>
         </div>
 
@@ -93,7 +93,7 @@ export function OrderSummaryCard({ order }: OrderSummaryCardProps) {
           <>
             <Separator />
             <div className="text-sm text-muted-foreground">
-              <p className="font-medium text-foreground mb-1">{t.orderConfirmation.billedTo}</p>
+              <p className="font-medium text-foreground mb-1">{t('orderConfirmation.billedTo')}</p>
               <p>
                 {order.billing_address.first_name} {order.billing_address.last_name}
               </p>
