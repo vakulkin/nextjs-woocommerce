@@ -1,12 +1,19 @@
-import { GoogleTagManager } from "@next/third-parties/google";
+import Script from "next/script";
 
 /**
- * Loads Google Tag Manager via @next/third-parties.
+ * Loads the GTM container script (afterInteractive).
+ * The dataLayer init snippet lives in app/layout.tsx <head> so it runs
+ * synchronously — before any dataLayer.push() calls during hydration.
  * Set NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX in .env.local to activate.
- * GA4 is attached to the GTM container — no direct GA4 tag in code.
  */
 export default function GoogleTagManagerLoader() {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
   if (!gtmId) return null;
-  return <GoogleTagManager gtmId={gtmId} />;
+  return (
+    <Script
+      id="gtm"
+      src={`/gtm/gtm.js?id=${gtmId}`}
+      strategy="afterInteractive"
+    />
+  );
 }

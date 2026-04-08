@@ -1,8 +1,7 @@
 import { en } from "./en";
 import { custom } from "./custom";
-export type { TranslationKey } from "./en";
-// Legacy type re-exports kept so any existing `import type { Translations }` still compiles.
-export type { Translations, CustomTranslations } from "./en";
+
+export type TranslationKey = keyof typeof en;
 
 /** Merged flat dictionary: custom overrides win over en defaults. */
 const translations: Record<string, string> = { ...en, ...custom };
@@ -13,7 +12,7 @@ const translations: Record<string, string> = { ...en, ...custom };
  * @param key     - e.g. "brand.name", "cart.pageTitle"
  * @param fallback - returned when the key is missing (default "")
  */
-export function t(key: string, fallback = ""): string {
+export function t(key: TranslationKey, fallback = ""): string {
   const val = translations[key];
   if (val === undefined) {
     if (process.env.NODE_ENV === "development") {

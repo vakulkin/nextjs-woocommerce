@@ -21,10 +21,10 @@ interface FireGTMEventProps {
  * Fires a GTM dataLayer event on first mount.
  * Use in server components that need to push a dataLayer event on page load.
  *
- * @example — ecommerce event (view_item, view_item_list, purchase …)
- * <FireGTMEvent event="view_item_list" params={{ item_list_name: "Shop", items: ga4Items }} ecommerce />
+ * @example — ecommerce event
+ * <FireGTMEvent event="purchase" params={purchaseParams} ecommerce />
  *
- * @example — non-ecommerce event (search, login …)
+ * @example — non-ecommerce event
  * <FireGTMEvent event="search" params={{ search_term: query }} />
  */
 export function FireGTMEvent({ event, params, ecommerce = false }: FireGTMEventProps) {

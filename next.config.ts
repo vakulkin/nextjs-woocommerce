@@ -1,6 +1,22 @@
 import type { NextConfig } from "next";
+import bundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    // Proxy GTM through our own domain so domain-based ad blockers
+    // (uBlock Origin, Ghostery) cannot match www.googletagmanager.com.
+    // Query strings (e.g. ?id=GTM-XXXXX) are forwarded automatically.
+    return [
+      {
+        source: "/gtm/:path*",
+        destination: "https://www.googletagmanager.com/:path*",
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
@@ -13,4 +29,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

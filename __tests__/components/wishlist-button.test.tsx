@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { WishlistButton } from "@/components/wishlist-button";
 import { useWishlistStore } from "@/lib/store/wishlist-store";
