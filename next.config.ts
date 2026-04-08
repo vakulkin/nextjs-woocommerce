@@ -4,12 +4,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "**",
-      },
-      {
-        protocol: "http",
-        hostname: "**",
+        protocol: (process.env.NEXT_PUBLIC_WOOCOMMERCE_PROTCOL as "http" | "https") || "https",
+        hostname: "" + process.env.NEXT_PUBLIC_WOOCOMMERCE_HOST,
       },
     ],
     // Skip image optimization for local development (private IP)

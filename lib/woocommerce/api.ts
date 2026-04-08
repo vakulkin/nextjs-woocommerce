@@ -1,6 +1,6 @@
 import type { WooProduct, WooCategory, WooStoreOrder } from "./types";
 
-const WP_URL = process.env.NEXT_PUBLIC_WOOCOMMERCE_URL;
+const WP_URL = `${process.env.NEXT_PUBLIC_WOOCOMMERCE_PROTCOL}://${process.env.NEXT_PUBLIC_WOOCOMMERCE_HOST}`;
 const STORE_API_URL = `${WP_URL}/wp-json/wc/store/v1`;
 
 // ─── Nonce cache ─────────────────────────────────────────────
