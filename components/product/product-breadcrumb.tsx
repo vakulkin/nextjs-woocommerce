@@ -19,7 +19,7 @@ export function ProductBreadcrumb({ categories, productName }: ProductBreadcrumb
       </Link>
       <ChevronRight className="h-3 w-3" aria-hidden="true" />
       <Link href="/shop" className="hover:text-foreground transition-colors">
-        {t.productBreadcrumb.shop}
+        {t('productBreadcrumb.shop')}
       </Link>
       <ChevronRight className="h-3 w-3" aria-hidden="true" />
       {categories[0] && (

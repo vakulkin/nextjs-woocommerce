@@ -86,14 +86,14 @@ export function SearchBar() {
         <Input
           ref={inputRef}
           type="search"
-          placeholder={t.search.placeholder}
+          placeholder={t('search.placeholder')}
           value={query}
           onChange={(e) => handleQueryChange(e.target.value)}
           onKeyDown={handleKeyDown}
           onFocus={() => { if (results.length > 0) setIsOpen(true); }}
           className="pl-9 pr-8"
           autoComplete="off"
-          aria-label={t.search.ariaLabel}
+          aria-label={t('search.ariaLabel')}
           aria-expanded={showDropdown}
           aria-haspopup="listbox"
         />
@@ -102,7 +102,7 @@ export function SearchBar() {
             type="button"
             onClick={clearQuery}
             className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
-            aria-label={t.search.clearLabel}
+            aria-label={t('search.clearLabel')}
           >
             <X className="h-3.5 w-3.5" />
           </button>
@@ -161,7 +161,7 @@ export function SearchBar() {
                   className="flex items-center justify-center gap-1.5 py-2.5 text-sm font-medium text-primary hover:bg-muted transition-colors"
                 >
                   <Search className="h-3.5 w-3.5" />
-                  {t.search.seeAllResults} &ldquo;{query.trim()}&rdquo;
+                  {t('search.seeAllResults')} &ldquo;{query.trim()}&rdquo;
                 </Link>
               </div>
             </>

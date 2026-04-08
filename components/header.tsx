@@ -6,8 +6,8 @@ import { WishlistIcon } from "@/components/wishlist-icon";
 import { t } from "@/lib/i18n";
 
 const NAV_LINKS = [
-  { href: "/shop", label: t.nav.shopAll },
-  { href: "/shop?on_sale=true", label: t.nav.onSale },
+  { href: "/shop", label: t('nav.shopAll') },
+  { href: "/shop?on_sale=true", label: t('nav.onSale') },
 ];
 
 export function Header() {
@@ -18,15 +18,15 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="shrink-0 flex flex-col leading-none select-none">
           <span className="font-heading text-[1.15rem] font-bold tracking-[0.15em] uppercase">
-            {t.brand.name}
+            {t('brand.name')}
           </span>
           <span className="text-[9px] tracking-[0.45em] text-muted-foreground uppercase font-medium -mt-0.5">
-            {t.brand.tagline}
+            {t('brand.tagline')}
           </span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8 text-sm" aria-label={t.nav.mainLabel}>
+        <nav className="hidden md:flex items-center gap-8 text-sm" aria-label={t('nav.mainLabel')}>
           {NAV_LINKS.map(({ href, label }) => (
             <Link
               key={label}

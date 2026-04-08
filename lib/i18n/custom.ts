@@ -1,18 +1,13 @@
 /**
  * Custom translations — override any key from lib/i18n/en.ts here.
- *
- * Only keys you want to change need to be listed.  All other strings
- * will fall back to the English defaults automatically.
+ * Keys must match the flat dot-notation keys defined in en.ts.
  *
  * Example:
- *   import type { CustomTranslations } from "./en";
- *   export const custom: CustomTranslations = {
- *     brand: { name: "My Store" },
- *     cart: { pageTitle: "Panier" },
+ *   export const custom: Record<string, string> = {
+ *     "brand.name": "My Store",
+ *     "cart.pageTitle": "Panier",
  *   };
  */
-import type { CustomTranslations } from "./en";
-
-export const custom: CustomTranslations = {
+export const custom: Record<string, string> = {
   // Add your overrides here ↓
 };

@@ -7,21 +7,21 @@ import { useCheckoutStore } from "@/lib/store/checkout-store";
 import { t } from "@/lib/i18n";
 
 const PAYMENT_METHOD_LABELS: Record<string, string> = {
-  bacs: t.checkout.payment.bacs,
-  cheque: t.checkout.payment.cheque,
-  cod: t.checkout.payment.cod,
-  stripe: t.checkout.payment.stripe,
-  stripe_cc: t.checkout.payment.stripe_cc,
-  paypal: t.checkout.payment.paypal,
+  bacs: t('checkout.payment.bacs'),
+  cheque: t('checkout.payment.cheque'),
+  cod: t('checkout.payment.cod'),
+  stripe: t('checkout.payment.stripe'),
+  stripe_cc: t('checkout.payment.stripe_cc'),
+  paypal: t('checkout.payment.paypal'),
 };
 
 const PAYMENT_METHOD_DESCRIPTIONS: Record<string, string> = {
-  bacs: t.checkout.paymentDesc.bacs,
-  cheque: t.checkout.paymentDesc.cheque,
-  cod: t.checkout.paymentDesc.cod,
-  stripe: t.checkout.paymentDesc.stripe,
-  stripe_cc: t.checkout.paymentDesc.stripe_cc,
-  paypal: t.checkout.paymentDesc.paypal,
+  bacs: t('checkout.paymentDesc.bacs'),
+  cheque: t('checkout.paymentDesc.cheque'),
+  cod: t('checkout.paymentDesc.cod'),
+  stripe: t('checkout.paymentDesc.stripe'),
+  stripe_cc: t('checkout.paymentDesc.stripe_cc'),
+  paypal: t('checkout.paymentDesc.paypal'),
 };
 
 interface PaymentMethodSelectorProps {
@@ -38,7 +38,7 @@ export function PaymentMethodSelector({ paymentMethods, isDisabled, onPaymentSel
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <CreditCard className="h-5 w-5" />
-          {t.checkout.paymentTitle}
+          {t('checkout.paymentTitle')}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-2">
@@ -76,7 +76,7 @@ export function PaymentMethodSelector({ paymentMethods, isDisabled, onPaymentSel
                 {isSelected && (method === "stripe_cc" || method === "stripe") && (
                   <p className="text-xs text-muted-foreground mt-1 flex items-center gap-1">
                     <ExternalLink className="h-3 w-3" />
-                    {t.checkout.stripeRedirect}
+                    {t('checkout.stripeRedirect')}
                   </p>
                 )}
               </div>

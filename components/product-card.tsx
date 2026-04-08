@@ -36,14 +36,14 @@ export function ProductCard({ product }: ProductCardProps) {
           />
         ) : (
           <div className="flex h-full items-center justify-center text-muted-foreground text-sm">
-            {t.product.noImageAlt}
+            {t('product.noImageAlt')}
           </div>
         )}
 
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/8 transition-colors duration-300 flex items-end justify-center pb-5 opacity-0 group-hover:opacity-100">
           <span className="bg-background/95 backdrop-blur-sm text-foreground text-xs font-medium tracking-[0.15em] uppercase px-4 py-2 rounded-full shadow-sm translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-            {t.product.viewProduct}
+            {t('product.viewProduct')}
           </span>
         </div>
 
@@ -51,12 +51,12 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">
           {onSale && (
             <Badge className="text-[10px] tracking-wider uppercase font-medium px-2 py-0.5 bg-[var(--gold)] text-white border-0 hover:bg-[var(--gold)]">
-              {t.product.saleBadge}
+              {t('product.saleBadge')}
             </Badge>
           )}
           {!product.is_in_stock && (
             <Badge variant="secondary" className="text-[10px] tracking-wider uppercase font-medium px-2 py-0.5">
-              {t.product.soldOutBadge}
+              {t('product.soldOutBadge')}
             </Badge>
           )}
         </div>
@@ -85,7 +85,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
         {product.prices.price_range && (
           <p className="text-xs text-muted-foreground">
-            {t.product.priceFrom} {formatProductPrice({ ...product.prices, price: product.prices.price_range.min_amount }).current}
+            {t('product.priceFrom')} {formatProductPrice({ ...product.prices, price: product.prices.price_range.min_amount }).current}
           </p>
         )}
       </div>

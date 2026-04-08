@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Checkout",
-  description: "Complete your order securely at LuxuryAroma.",
+  description: t('checkout.pageDescription'),
   robots: { index: false, follow: false },
 };
 

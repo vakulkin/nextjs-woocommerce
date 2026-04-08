@@ -6,6 +6,7 @@
  */
 
 import type { WooProduct, WooCartItem, WooStoreOrderItem } from "@/lib/woocommerce/types";
+import { t } from "@/lib/i18n";
 
 /** Decodes common HTML entities returned by the WooCommerce REST API. */
 function decodeHtml(str: string): string {
@@ -38,7 +39,7 @@ export function productToEcommerceItem(product: WooProduct, index = 0): Ecommerc
     item_id: String(product.id),
     item_name: decodeHtml(product.name),
     item_category: product.categories[0]?.name ?? "",
-    item_brand: "LuxuryAroma",
+    item_brand: t('brand.name'),
     price: parseInt(product.prices.price) / divisor,
     quantity: 1,
     index,

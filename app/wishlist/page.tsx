@@ -51,13 +51,13 @@ export default function WishlistPage() {
 
   const handleRemove = (id: number, name: string) => {
     remove(id);
-    toast(`${name} ${t.wishlist.removedFromWishlist}`);
+    toast(`${name} ${t('wishlist.removedFromWishlist')}`);
   };
 
   if (!_hasHydrated) {
     return (
       <main className="container mx-auto px-4 md:px-6 py-12">
-        <h1 className="font-heading text-3xl md:text-4xl font-bold mb-8">{t.wishlist.pageTitle}</h1>
+        <h1 className="font-heading text-3xl md:text-4xl font-bold mb-8">{t('wishlist.pageTitle')}</h1>
         <WishlistSkeleton />
       </main>
     );
@@ -70,14 +70,14 @@ export default function WishlistPage() {
           <Heart className="h-9 w-9 text-muted-foreground" />
         </div>
         <div className="space-y-2">
-          <h1 className="font-heading text-3xl font-bold">{t.wishlist.emptyTitle}</h1>
+          <h1 className="font-heading text-3xl font-bold">{t('wishlist.emptyTitle')}</h1>
           <p className="text-muted-foreground max-w-sm">
-            {t.wishlist.emptyHint}
+            {t('wishlist.emptyHint')}
           </p>
         </div>
         <Link href="/shop" className={buttonVariants({ size: "lg" })}>
           <ShoppingBag className="mr-2 h-4 w-4" />
-          {t.wishlist.browseCollection}
+          {t('wishlist.browseCollection')}
         </Link>
       </main>
     );
@@ -89,12 +89,12 @@ export default function WishlistPage() {
       <div className="flex items-end justify-between mb-8 gap-4">
         <div>
           <p className="text-xs tracking-[0.3em] uppercase text-[var(--gold)] font-medium mb-1">
-            {t.wishlist.savedItems}
+            {t('wishlist.savedItems')}
           </p>
           <h1 className="font-heading text-3xl md:text-4xl font-bold">
-            {t.wishlist.pageTitle}
+            {t('wishlist.pageTitle')}
             <span className="ml-3 text-base font-normal text-muted-foreground font-sans">
-              ({items.length} {items.length === 1 ? t.wishlist.itemSingular : t.wishlist.itemPlural})
+              ({items.length} {items.length === 1 ? t('wishlist.itemSingular') : t('wishlist.itemPlural')})
             </span>
           </h1>
         </div>
@@ -104,11 +104,11 @@ export default function WishlistPage() {
           className="text-muted-foreground hover:text-destructive shrink-0"
           onClick={() => {
             clear();
-            toast(t.wishlist.wishlistCleared);
+            toast(t('wishlist.wishlistCleared'));
           }}
         >
           <Trash2 className="mr-1.5 h-3.5 w-3.5" />
-          {t.wishlist.clearAll}
+          {t('wishlist.clearAll')}
         </Button>
       </div>
 
@@ -142,7 +142,7 @@ export default function WishlistPage() {
                     />
                   ) : (
                     <div className="flex h-full items-center justify-center text-muted-foreground text-sm">
-                      {t.wishlist.noImage}
+                      {t('wishlist.noImage')}
                     </div>
                   )}
 
@@ -150,12 +150,12 @@ export default function WishlistPage() {
                   <div className="absolute top-3 left-3 flex flex-col gap-1.5">
                     {onSale && (
                       <Badge className="text-[10px] tracking-wider uppercase font-medium px-2 py-0.5 bg-[var(--gold)] text-white border-0 hover:bg-[var(--gold)]">
-                        {t.wishlist.saleBadge}
+                        {t('wishlist.saleBadge')}
                       </Badge>
                     )}
                     {!item.is_in_stock && (
                       <Badge variant="secondary" className="text-[10px] tracking-wider uppercase font-medium px-2 py-0.5">
-                        {t.wishlist.soldOutBadge}
+                        {t('wishlist.soldOutBadge')}
                       </Badge>
                     )}
                   </div>

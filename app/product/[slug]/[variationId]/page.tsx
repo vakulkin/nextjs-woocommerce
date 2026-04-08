@@ -28,12 +28,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           ? [{ url: product.images[0].src, width: 1200, height: 1500, alt: product.name }]
           : [],
       },
-      twitter: {
-        card: "summary_large_image",
-        title: product.name,
-        description,
-        images: product.images[0] ? [product.images[0].src] : [],
-      },
     };
   } catch {
     return { title: "Product Not Found" };

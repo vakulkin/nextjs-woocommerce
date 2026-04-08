@@ -53,13 +53,13 @@ describe("WishlistButton", () => {
 
   it("has 'Add to wishlist' aria-label when product is not wishlisted", () => {
     render(<WishlistButton product={product} />);
-    expect(screen.getByRole("button")).toHaveAccessibleName(t.wishlist.addAriaLabel);
+    expect(screen.getByRole("button")).toHaveAccessibleName(t('wishlist.addAriaLabel'));
   });
 
   it("has 'Remove from wishlist' aria-label when product is wishlisted", () => {
     setupStore(true);
     render(<WishlistButton product={product} />);
-    expect(screen.getByRole("button")).toHaveAccessibleName(t.wishlist.removeAriaLabel);
+    expect(screen.getByRole("button")).toHaveAccessibleName(t('wishlist.removeAriaLabel'));
   });
 
   it("has aria-pressed=false when not wishlisted", () => {
@@ -89,7 +89,7 @@ describe("WishlistButton", () => {
     it("shows saved toast", () => {
       render(<WishlistButton product={product} />);
       fireEvent.click(screen.getByRole("button"));
-      expect(mockToast).toHaveBeenCalledWith(t.wishlist.savedToast);
+      expect(mockToast).toHaveBeenCalledWith(t('wishlist.savedToast'));
     });
   });
 
@@ -112,7 +112,7 @@ describe("WishlistButton", () => {
       setupStore(true);
       render(<WishlistButton product={product} />);
       fireEvent.click(screen.getByRole("button"));
-      expect(mockToast).toHaveBeenCalledWith(t.wishlist.removedToast);
+      expect(mockToast).toHaveBeenCalledWith(t('wishlist.removedToast'));
     });
   });
 });

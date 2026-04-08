@@ -57,12 +57,12 @@ beforeEach(() => {
 describe("simple product (in stock)", () => {
   it("renders the Add to Cart button", () => {
     render(<AddToCartForm product={makeProduct()} {...defaultProps} />);
-    expect(screen.getByRole("button", { name: new RegExp(t.product.addToCart, "i") })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: new RegExp(t('product.addToCart'), "i") })).toBeInTheDocument();
   });
 
   it("button is enabled when product is purchasable and in stock", () => {
     render(<AddToCartForm product={makeProduct()} {...defaultProps} />);
-    expect(screen.getByRole("button", { name: new RegExp(t.product.addToCart, "i") })).not.toBeDisabled();
+    expect(screen.getByRole("button", { name: new RegExp(t('product.addToCart'), "i") })).not.toBeDisabled();
   });
 
   it("renders the quantity input controls", () => {
@@ -73,7 +73,7 @@ describe("simple product (in stock)", () => {
 
   it("calls addItem and openCart on submit", async () => {
     render(<AddToCartForm product={makeProduct({ id: 7 })} {...defaultProps} />);
-    fireEvent.click(screen.getByRole("button", { name: new RegExp(t.product.addToCart, "i") }));
+    fireEvent.click(screen.getByRole("button", { name: new RegExp(t('product.addToCart'), "i") }));
     await waitFor(() => expect(mockAddItem).toHaveBeenCalledWith(7, 1));
     expect(mockOpenCart).toHaveBeenCalled();
   });
@@ -84,12 +84,12 @@ describe("simple product (in stock)", () => {
 describe("simple product (out of stock)", () => {
   it("renders the out of stock text inside the button", () => {
     render(<AddToCartForm product={makeProduct({ is_in_stock: false })} {...defaultProps} />);
-    expect(screen.getByRole("button", { name: new RegExp(t.product.outOfStock, "i") })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: new RegExp(t('product.outOfStock'), "i") })).toBeInTheDocument();
   });
 
   it("button is disabled when out of stock", () => {
     render(<AddToCartForm product={makeProduct({ is_in_stock: false })} {...defaultProps} />);
-    expect(screen.getByRole("button", { name: new RegExp(t.product.outOfStock, "i") })).toBeDisabled();
+    expect(screen.getByRole("button", { name: new RegExp(t('product.outOfStock'), "i") })).toBeDisabled();
   });
 });
 
@@ -103,7 +103,7 @@ describe("external product", () => {
         {...defaultProps}
       />
     );
-    expect(screen.getByRole("button", { name: new RegExp(t.product.buyProduct, "i") })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: new RegExp(t('product.buyProduct'), "i") })).toBeInTheDocument();
   });
 
   it("uses product.button_text when provided", () => {
@@ -145,12 +145,12 @@ describe("external product", () => {
 describe("grouped product", () => {
   it("renders the grouped hint text", () => {
     render(<AddToCartForm product={makeProduct({ type: "grouped" })} {...defaultProps} />);
-    expect(screen.getByText(t.product.groupedHint)).toBeInTheDocument();
+    expect(screen.getByText(t('product.groupedHint'))).toBeInTheDocument();
   });
 
   it("renders a link to browse products", () => {
     render(<AddToCartForm product={makeProduct({ type: "grouped" })} {...defaultProps} />);
-    expect(screen.getByRole("link", { name: new RegExp(t.product.browseProducts, "i") })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: new RegExp(t('product.browseProducts'), "i") })).toBeInTheDocument();
   });
 
   it("does NOT render an Add to Cart button", () => {
@@ -198,8 +198,8 @@ describe("variable product", () => {
         onVariationChange={noopVariationChange}
       />
     );
-    fireEvent.click(screen.getByRole("button", { name: new RegExp(t.product.addToCart, "i") }));
-    expect(mockToastError).toHaveBeenCalledWith(t.product.selectAllOptions);
+    fireEvent.click(screen.getByRole("button", { name: new RegExp(t('product.addToCart'), "i") }));
+    expect(mockToastError).toHaveBeenCalledWith(t('product.selectAllOptions'));
     expect(mockAddItem).not.toHaveBeenCalled();
   });
 
@@ -212,7 +212,7 @@ describe("variable product", () => {
         onVariationChange={noopVariationChange}
       />
     );
-    fireEvent.click(screen.getByRole("button", { name: new RegExp(t.product.addToCart, "i") }));
+    fireEvent.click(screen.getByRole("button", { name: new RegExp(t('product.addToCart'), "i") }));
     await waitFor(() => expect(mockAddItem).toHaveBeenCalledWith(99, 1));
   });
 });
@@ -253,10 +253,10 @@ describe("add to cart error", () => {
   it("shows error toast when addItem returns an error", async () => {
     setupStore({ addResult: { error: "Cannot add item" } });
     render(<AddToCartForm product={makeProduct()} {...defaultProps} />);
-    fireEvent.click(screen.getByRole("button", { name: new RegExp(t.product.addToCart, "i") }));
+    fireEvent.click(screen.getByRole("button", { name: new RegExp(t('product.addToCart'), "i") }));
     await waitFor(() =>
       expect(mockToastError).toHaveBeenCalledWith(
-        t.product.cantAddToCart,
+        t('product.cantAddToCart'),
         expect.objectContaining({ description: "Cannot add item" })
       )
     );

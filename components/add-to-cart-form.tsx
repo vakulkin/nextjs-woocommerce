@@ -45,8 +45,8 @@ function isTermInStock(
       const attr = product.attributes.find((a) => a.name === va.name);
       if (!attr) return false;
       const term =
-        attr.terms.find((t) => t.name === va.value) ??
-        attr.terms.find((t) => t.slug === va.value);
+        attr.terms.find((term) => term.name === va.value) ??
+        attr.terms.find((term) => term.slug === va.value);
       return term?.slug === termSlug;
     })
   );
@@ -81,7 +81,7 @@ export function AddToCartForm({ product, variationId, selectedVariation, onVaria
         (attr) => selectedVariation[attr.name]
       );
       if (!allSelected) {
-        toast.error(t.product.selectAllOptions);
+        toast.error(t('product.selectAllOptions'));
         return;
       }
     }
@@ -94,7 +94,7 @@ export function AddToCartForm({ product, variationId, selectedVariation, onVaria
 
       const result = await addItem(idToAdd, quantity);
       if (result.error) {
-        toast.error(t.product.cantAddToCart, { description: result.error });
+        toast.error(t('product.cantAddToCart'), { description: result.error });
       } else {
         trackAddToCart(
           { ...productToEcommerceItem(product), item_id: String(variationId ?? product.id), quantity },
@@ -116,7 +116,7 @@ export function AddToCartForm({ product, variationId, selectedVariation, onVaria
         onClick={handleAddToCart}
       >
         <ExternalLink className="mr-2 h-4 w-4" />
-        {product.button_text || t.product.buyProduct}
+        {product.button_text || t('product.buyProduct')}
       </Button>
     );
   }
@@ -126,10 +126,10 @@ export function AddToCartForm({ product, variationId, selectedVariation, onVaria
     return (
       <div className="space-y-2">
         <p className="text-sm text-muted-foreground">
-          {t.product.groupedHint}
+          {t('product.groupedHint')}
         </p>
       <a href="/shop" className={cn(buttonVariants({ size: "lg", variant: "outline" }), "w-full")}>
-          {t.product.browseProducts}
+          {t('product.browseProducts')}
         </a>
       </div>
     );
@@ -148,7 +148,7 @@ export function AddToCartForm({ product, variationId, selectedVariation, onVaria
                 <p className="text-sm font-medium mb-2">
                   {attr.name}:
                   <span className="font-normal text-muted-foreground ml-1">
-                    {sorted.find((t) => t.slug === selectedVariation[attr.name])?.name ?? ""}
+                    {sorted.find((term) => term.slug === selectedVariation[attr.name])?.name ?? ""}
                   </span>
                 </p>
                 <div className="flex flex-wrap gap-2" role="group" aria-label={`Select ${attr.name}`}>
@@ -186,7 +186,7 @@ export function AddToCartForm({ product, variationId, selectedVariation, onVaria
 
       {/* Quantity */}
       <div>
-        <label className="text-sm font-medium mb-1.5 block">{t.product.quantity}</label>
+        <label className="text-sm font-medium mb-1.5 block">{t('product.quantity')}</label>
         <QuantityInput
           value={quantity}
           min={min}
@@ -206,13 +206,13 @@ export function AddToCartForm({ product, variationId, selectedVariation, onVaria
           aria-live="polite"
         >
           {justAdded ? (
-            <><Check className="mr-2 h-4 w-4" />{t.product.added}</>
+            <><Check className="mr-2 h-4 w-4" />{t('product.added')}</>
           ) : isPending ? (
-            <><ShoppingCart className="mr-2 h-4 w-4 animate-bounce" />{t.product.adding}</>
+            <><ShoppingCart className="mr-2 h-4 w-4 animate-bounce" />{t('product.adding')}</>
           ) : !isInStock ? (
-            t.product.outOfStock
+            t('product.outOfStock')
           ) : (
-            <><ShoppingCart className="mr-2 h-4 w-4" />{t.product.addToCart}</>
+            <><ShoppingCart className="mr-2 h-4 w-4" />{t('product.addToCart')}</>
           )}
         </Button>
         <WishlistButton product={product} size="default" />

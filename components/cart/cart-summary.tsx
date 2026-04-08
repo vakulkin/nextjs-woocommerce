@@ -13,18 +13,18 @@ export function CartSummary() {
 
   return (
     <div className="rounded-lg border bg-card p-6 sticky top-24">
-      <h2 className="text-lg font-semibold mb-4">{t.cart.orderSummary}</h2>
+      <h2 className="text-lg font-semibold mb-4">{t('cart.orderSummary')}</h2>
 
       <CartTotals totals={cart.totals} separatorClassName="my-4" />
 
       <Link href="/checkout" className={cn(buttonVariants({ size: "lg" }), "w-full mt-6")}>
-        {t.cart.proceedToCheckout}
+        {t('cart.proceedToCheckout')}
       </Link>
       <Link
         href="/shop"
         className={cn(buttonVariants({ variant: "outline", size: "lg" }), "w-full mt-2")}
       >
-        {t.cart.continueShopping}
+        {t('cart.continueShopping')}
       </Link>
     </div>
   );

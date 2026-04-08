@@ -27,7 +27,7 @@ export function CheckoutOrderSummary({
   return (
     <Card className="sticky top-24">
       <CardHeader>
-        <CardTitle>{t.checkout.orderSummaryTitle}</CardTitle>
+        <CardTitle>{t('checkout.orderSummaryTitle')}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {/* Items */}
@@ -56,7 +56,7 @@ export function CheckoutOrderSummary({
         <div className="rounded-md bg-muted p-3 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <Lock className="h-4 w-4 shrink-0" />
-            <span className="font-medium text-foreground">{t.checkout.secureCheckout}</span>
+            <span className="font-medium text-foreground">{t('checkout.secureCheckout')}</span>
           </div>
         </div>
 
@@ -67,12 +67,12 @@ export function CheckoutOrderSummary({
           disabled={isPending || isUpdatingAddress || isSelectingShipping}
         >
           {isPending
-            ? t.checkout.processing
+            ? t('checkout.processing')
             : isUpdatingAddress
-            ? t.checkout.recalculating
+            ? t('checkout.recalculating')
             : isStripeMethod
-            ? t.checkout.payWithStripe
-            : t.checkout.placeOrder}
+            ? t('checkout.payWithStripe')
+            : t('checkout.placeOrder')}
         </Button>
       </CardContent>
     </Card>
