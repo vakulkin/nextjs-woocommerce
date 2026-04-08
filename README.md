@@ -1,8 +1,7 @@
-# Headless WooCommerce Storefront · Next.js 16 + React 19
+# Headless WooCommerce Storefront · Next.js 16
 
-> A production-grade, headless e-commerce storefront that connects **Next.js** on the frontend to **WooCommerce** on the backend — delivering the performance of a modern SPA with the reliability of the world's most popular e-commerce engine.
+> A production-grade, headless e-commerce storefront that connects **Next.js** on the frontend to **WooCommerce** on the backend — delivering the performance and reliability of the world's most popular e-commerce engine.
 
-Built by [Anton Vakulov](https://github.com/antonvakulov) — Senior WordPress & Next.js Developer with 8+ years of experience in headless architectures, WooCommerce integrations, and e-commerce performance.
 
 ---
 
@@ -52,7 +51,7 @@ This project is a modern, headless WooCommerce storefront built with Next.js. It
 
 **Stack:** Next.js, React, Zustand, Zod, Stripe, Jest, Tailwind CSS, TypeScript, WooCommerce
 
-**Required WordPress plugins:** WooCommerce, WooCommerce Blocks, custom nonce endpoint (mu-plugin)
+**Required WordPress plugins:** WooCommerce
 
 **Variable products:** Resolved at the Next.js layer, no theme customization needed
 
