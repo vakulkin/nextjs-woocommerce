@@ -63,9 +63,9 @@ export default function RootLayout({
     >
       {/* Initialize window.dataLayer before any client component mounts so
           sendGTMEvent calls are never lost, even before GTM script loads. */}
-      <head>
+      {/* <head>
         <script dangerouslySetInnerHTML={{ __html: "window.dataLayer=window.dataLayer||[];" }} />
-      </head>
+      </head> */}
       <body className="min-h-full flex flex-col">
         <ThemeProvider
           attribute="class"

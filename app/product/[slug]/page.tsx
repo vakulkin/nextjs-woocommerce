@@ -39,8 +39,16 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   try {
-    const products = await getProducts({ per_page: 20 });
-    return products.map((product) => ({ slug: product.slug }));
+    const allSlugs: { slug: string }[] = [];
+    let page = 1;
+    while (true) {
+      const products = await getProducts({ per_page: 100, page });
+      if (!products.length) break;
+      allSlugs.push(...products.map((p) => ({ slug: p.slug })));
+      if (products.length < 100) break;
+      page++;
+    }
+    return allSlugs;
   } catch {
     return [];
   }
@@ -76,24 +84,17 @@ async function resolveInitialVariation(product: WooProduct): Promise<{
 
   if (!sortedVariations.length) return null;
 
-  let chosen = sortedVariations[0];
-  let chosenData = await getVariationData(chosen.id);
+  const varDataAll = await Promise.all(
+    sortedVariations.map((v) => getVariationData(v.id))
+  );
 
-  if (chosenData?.is_in_stock !== true) {
-    for (let i = 1; i < sortedVariations.length; i++) {
-      const d = await getVariationData(sortedVariations[i].id);
-      if (d?.is_in_stock === true) {
-        chosen = sortedVariations[i];
-        chosenData = d;
-        break;
-      }
-    }
-  }
+  const inStockIdx = varDataAll.findIndex((d) => d?.is_in_stock === true);
+  const chosenIdx = inStockIdx >= 0 ? inStockIdx : 0;
 
   return {
-    variationId: chosen.id,
-    prices: chosenData?.prices ?? undefined,
-    isInStock: chosenData?.is_in_stock ?? false,
+    variationId: sortedVariations[chosenIdx].id,
+    prices: varDataAll[chosenIdx]?.prices ?? undefined,
+    isInStock: varDataAll[chosenIdx]?.is_in_stock ?? false,
   };
 }
 
