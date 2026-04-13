@@ -92,7 +92,7 @@ export default function RootLayout({
         >
           <CartStoreInitializer />
           <Navbar1 />
-          <div className="border-b border-border/40 bg-muted/30">
+          {/* <div className="border-b border-border/40 bg-muted/30">
             <div className="container mx-auto px-4 md:px-6">
               <div className="flex h-9 items-center justify-between gap-4">
                 <Breadcrumbs />
@@ -101,7 +101,7 @@ export default function RootLayout({
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <main className="flex-1">{children}</main>
           <Footer />
           <Toaster />
