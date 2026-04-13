@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { JsonLdScript } from "@/components/ui/json-ld-script";
-import { t } from "@/lib/i18n";
+import { LandingHero } from "@/components/home/landing-hero";
+import { LandingArchitecture } from "@/components/home/landing-architecture";
+import { LandingForBusiness } from "@/components/home/landing-for-business";
+import { LandingFeatures } from "@/components/home/landing-features";
+import { LandingForMarketers } from "@/components/home/landing-for-marketers";
+import { LandingForDevelopers } from "@/components/home/landing-for-developers";
+import { LandingFinalCta } from "@/components/home/landing-final-cta";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: t('brand.name'),
-  description: t('brand.description'),
+  title: "Headless WooCommerce Storefront · Next.js 16",
+  description:
+    "Production-grade headless storefront for WooCommerce. CDN-fast pages, full GA4 Enhanced Ecommerce, Stripe Checkout — without migrating a product.",
   openGraph: {
-    title: t('brand.name') + " — " + t('brand.tagline'),
-    description: t('brand.description'),
+    title: "Headless WooCommerce Storefront · Next.js 16",
+    description:
+      "Drop-in headless frontend for WooCommerce. Next.js, Stripe, GA4 Enhanced Ecommerce — your data stays exactly where it is.",
     type: "website",
     url: "/",
   },
@@ -18,27 +25,16 @@ export const metadata: Metadata = {
   },
 };
 
-const websiteJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: t('brand.name'),
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL ?? ""}/search?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
-  },
-};
-
 export default function HomePage() {
   return (
     <>
-      <JsonLdScript data={websiteJsonLd} />
-      <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
-      </div>
+      <LandingHero />
+      <LandingArchitecture />
+      <LandingForBusiness />
+      <LandingFeatures />
+      <LandingForMarketers />
+      <LandingForDevelopers />
+      <LandingFinalCta />
     </>
   );
 }
