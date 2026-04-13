@@ -18,7 +18,10 @@ export function t(key: TranslationKey, fallback = ""): string {
     if (process.env.NODE_ENV === "development") {
       console.warn(`[i18n] Missing translation: "${key}"`);
     }
-    return fallback;
+    if (fallback !== "") {
+      return fallback;
+    }
+    return key; // Return the key itself as a fallback in production
   }
   return val;
 }

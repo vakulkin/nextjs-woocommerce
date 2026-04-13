@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CartStoreInitializer } from "@/components/cart-store-initializer";
-import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { SearchBar } from "@/components/search-bar";
 import { Toaster } from "@/components/ui/sonner";
-import GoogleTagManagerLoader from "@/components/GoogleTagManager";
-import { WebVitals } from "@/components/WebVitals";
+import GoogleTagManagerLoader from "@/components/analytics/google-tag-manager";
+import { WebVitals } from "@/components/analytics/web-vitals";
 import { JsonLdScript } from "@/components/ui/json-ld-script";
 import { t } from "@/lib/i18n";
 import "./globals.css";
+import { Navbar1 } from "@/components/navbar1";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -89,7 +91,17 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CartStoreInitializer />
-          <Header />
+          <Navbar1 />
+          <div className="border-b border-border/40 bg-muted/30">
+            <div className="container mx-auto px-4 md:px-6">
+              <div className="flex h-9 items-center justify-between gap-4">
+                <Breadcrumbs />
+                <div className="shrink-0">
+                  <SearchBar />
+                </div>
+              </div>
+            </div>
+          </div>
           <main className="flex-1">{children}</main>
           <Footer />
           <Toaster />

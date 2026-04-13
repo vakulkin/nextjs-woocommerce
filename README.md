@@ -13,7 +13,6 @@
 - [For Digital Marketers & Analysts](#for-digital-marketers--analysts)
 - [For Developers & WooCommerce Specialists](#for-developers--woocommerce-specialists)
 - [Quick Start](#quick-start)
-- [Project Structure](#project-structure)
 - [Environment Variables](#environment-variables)
 
 ---
@@ -190,7 +189,8 @@ pnpm test
 
 ```env
 # WordPress / WooCommerce
-NEXT_PUBLIC_WORDPRESS_URL=https://your-wp-site.com
+NEXT_PUBLIC_WOOCOMMERCE_PROTCOL=https
+NEXT_PUBLIC_WOOCOMMERCE_HOST=...
 WC_CONSUMER_KEY=ck_...
 WC_CONSUMER_SECRET=cs_...
 

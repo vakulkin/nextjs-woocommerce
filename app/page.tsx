@@ -1,10 +1,4 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
-import { HeroSection } from "@/components/home/hero-section";
-import { TrustPillars } from "@/components/home/trust-pillars";
-import { BrandStoryCta } from "@/components/home/brand-story-cta";
-import { FeaturedSection } from "@/components/home/featured-section";
-import { OnSaleProducts } from "@/components/home/on-sale-products";
 import { JsonLdScript } from "@/components/ui/json-ld-script";
 import { t } from "@/lib/i18n";
 
@@ -43,15 +37,8 @@ export default function HomePage() {
   return (
     <>
       <JsonLdScript data={websiteJsonLd} />
-      <HeroSection />
-      <TrustPillars />
       <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
-        <FeaturedSection />
-        <Suspense fallback={null}>
-          <OnSaleProducts />
-        </Suspense>
       </div>
-      <BrandStoryCta />
     </>
   );
 }
