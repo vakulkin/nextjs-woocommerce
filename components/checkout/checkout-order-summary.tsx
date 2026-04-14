@@ -1,9 +1,9 @@
 "use client";
 
 import { formatPrice } from "@/lib/utils/format";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/defaultbutton";
 import { Separator } from "@/components/ui/separator";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/defaultcard";
 import { Lock } from "lucide-react";
 import { CartTotals } from "@/components/cart/cart-totals";
 import type { WooCart } from "@/lib/woocommerce/types";

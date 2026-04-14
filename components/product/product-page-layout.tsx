@@ -7,7 +7,7 @@ import { ProductSpecs } from "@/components/product/product-specs";
 import { RelatedProducts } from "@/components/product/related-products";
 import { stripHtml } from "@/lib/utils/format";
 import { productToEcommerceItem } from "@/lib/utils/gtm-items";
-import { JsonLdScript } from "@/components/ui/json-ld-script";
+import { JsonLdScript } from "@/components/analytics/json-ld-script";
 import { FireGTMEvent } from "@/components/analytics/fire-gtm-event";
 import type { WooProduct } from "@/lib/woocommerce/types";
 import { t } from "@/lib/i18n";

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCartStore } from "@/lib/store/cart-store";
 import { formatPrice } from "@/lib/utils/format";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/defaultbutton";
 import {
   Sheet,
   SheetContent,

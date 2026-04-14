@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { ExternalLink, CreditCard } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/defaultcard";
 import { useCheckoutStore } from "@/lib/store/checkout-store";
 import { t } from "@/lib/i18n";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/defaultcard";
 import { AddressFields } from "@/components/checkout/address-fields";
 import { t } from "@/lib/i18n";
 

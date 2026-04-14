@@ -10,7 +10,7 @@ export interface WooImage {
   alt: string;
 }
 
-export interface WooCategory {
+interface WooCategory {
   id: number;
   name: string;
   slug: string;

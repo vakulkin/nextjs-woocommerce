@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import type { WooProduct } from "@/lib/woocommerce/types";
 import { useCartStore } from "@/lib/store/cart-store";
 import { toast } from "sonner";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/defaultbutton";
 import { cn } from "@/lib/utils";
 import { sortTerms } from "@/lib/utils/product";
 import { ShoppingCart, ExternalLink, Check } from "lucide-react";

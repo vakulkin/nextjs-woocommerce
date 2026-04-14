@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { formatPrice } from "@/lib/utils/format";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/defaultcard";
 import { Truck } from "lucide-react";
 import type { WooShippingPackage } from "@/lib/woocommerce/types";
 import { t } from "@/lib/i18n";

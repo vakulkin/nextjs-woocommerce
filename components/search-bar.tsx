@@ -80,7 +80,7 @@ export function SearchBar() {
   const showDropdown = isOpen && (isPending || results.length > 0);
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-sm">
+    <div ref={containerRef} className="relative w-full">
       <form onSubmit={handleSubmit}>
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground z-10 pointer-events-none" />
         <Input

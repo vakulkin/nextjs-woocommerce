@@ -4,7 +4,7 @@ import type { WooStoreOrder } from "@/lib/woocommerce/types";
 import { OrderStatusCard } from "./order-status-card";
 import { OrderSummaryCard } from "./order-summary-card";
 import { orderItemsToEcommerceItems } from "@/lib/utils/gtm-items";
-import { JsonLdScript } from "@/components/ui/json-ld-script";
+import { JsonLdScript } from "@/components/analytics/json-ld-script";
 import { FireGTMEvent } from "@/components/analytics/fire-gtm-event";
 
 interface Props {

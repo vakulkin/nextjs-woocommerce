@@ -5,9 +5,9 @@ import { CartStoreInitializer } from "@/components/cart-store-initializer";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
-import GoogleTagManagerLoader from "@/components/GoogleTagManager";
-import { WebVitals } from "@/components/WebVitals";
-import { JsonLdScript } from "@/components/ui/json-ld-script";
+import GoogleTagManagerLoader from "@/components/analytics/google-tag-manager";
+import { WebVitals } from "@/components/analytics/web-vitals";
+import { JsonLdScript } from "@/components/analytics/json-ld-script";
 import { t } from "@/lib/i18n";
 import "./globals.css";
 
