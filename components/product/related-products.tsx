@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getProducts } from "@/lib/woocommerce/api";
 import { ProductCard } from "@/components/product-card";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/defaultbutton";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import { t } from "@/lib/i18n";

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCartStore } from "@/lib/store/cart-store";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/defaultbutton";
 import { CartTotals } from "@/components/cart/cart-totals";
 import { cn } from "@/lib/utils";
 import { t } from "@/lib/i18n";

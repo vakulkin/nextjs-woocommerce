@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCartStore } from "@/lib/store/cart-store";
 import { formatPrice } from "@/lib/utils/format";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/defaultbutton";
 import { Trash2 } from "lucide-react";
 import { QuantityInput } from "@/components/ui/quantity-input";
 import type { WooCartItem } from "@/lib/woocommerce/types";

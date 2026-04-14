@@ -1,6 +1,6 @@
 # Headless WooCommerce Storefront · Next.js 16
 
-> A production-grade, headless e-commerce storefront that connects **Next.js** on the frontend to **WooCommerce** on the backend — delivering the performance and reliability of the world's most popular e-commerce engine.
+> A headless e-commerce storefront that connects **Next.js** on the frontend to **WooCommerce** on the backend — delivering the performance and reliability of the world's most popular e-commerce engine.
 
 
 ---
@@ -157,7 +157,7 @@ Stripe checkout sessions carry the WooCommerce order ID in metadata, and the Woo
 ### 1. Clone & install
 
 ```bash
-git clone https://github.com/antonvakulov/nextjs-woocommerce.git
+git clone https://github.com/vakulkin/nextjs-woocommerce.git
 cd nextjs-woocommerce
 pnpm install
 ```

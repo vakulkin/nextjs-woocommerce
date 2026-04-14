@@ -6,7 +6,7 @@ import { useCartStore } from "@/lib/store/cart-store";
 import { useCheckoutStore } from "@/lib/store/checkout-store";
 import { selectShippingRate } from "@/lib/actions/cart";
 import { checkoutAction } from "@/lib/actions/checkout-submit";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/defaultbutton";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { ShoppingCart } from "lucide-react";

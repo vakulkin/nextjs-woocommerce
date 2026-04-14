@@ -6,7 +6,7 @@ import { ProductGridSkeleton } from "@/components/product-skeleton";
 import { SearchBar } from "@/components/search-bar";
 import { SearchQuerySchema } from "@/lib/validation/schemas";
 import { productToEcommerceItem } from "@/lib/utils/gtm-items";
-import { JsonLdScript } from "@/components/ui/json-ld-script";
+import { JsonLdScript } from "@/components/analytics/json-ld-script";
 import { FireGTMEvent } from "@/components/analytics/fire-gtm-event";
 import { t } from "@/lib/i18n";
 

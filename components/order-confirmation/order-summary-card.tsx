@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/defaultcard";
 import { Separator } from "@/components/ui/separator";
 import { formatPrice } from "@/lib/utils/format";
 import type { WooStoreOrder } from "@/lib/woocommerce/types";

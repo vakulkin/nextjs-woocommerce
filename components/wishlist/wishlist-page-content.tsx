@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useWishlistStore } from "@/lib/store/wishlist-store";
 import Image from "next/image";
 import Link from "next/link";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/defaultbutton";
 import { Badge } from "@/components/ui/badge";
 import { formatProductPrice } from "@/lib/utils/format";
 import { Heart, ShoppingBag, Trash2, X } from "lucide-react";
