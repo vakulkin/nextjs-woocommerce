@@ -2,6 +2,13 @@
 
 > A headless e-commerce storefront that connects **Next.js** on the frontend to **WooCommerce** on the backend — delivering the performance and reliability of the world's most popular e-commerce engine.
 
+[![Demo screenshot](public/assets/screenshots/main.png)](https://headless-woocommerce.adsister.com/)
+
+<p align="center">
+	<a href="https://headless-woocommerce.adsister.com/" target="_blank" rel="noopener noreferrer">
+		<img src="https://img.shields.io/badge/Open%20Demo-Visit-blue?style=for-the-badge" alt="Open Demo">
+	</a>
+</p>
 
 ---
 
@@ -190,7 +197,9 @@ pnpm test
 
 ```env
 # WordPress / WooCommerce
-NEXT_PUBLIC_WORDPRESS_URL=https://your-wp-site.com
+NEXT_PUBLIC_SITE_URL=https://headless-woocommerce.adsister.com
+NEXT_PUBLIC_WOOCOMMERCE_PROTCOL=https
+NEXT_PUBLIC_WOOCOMMERCE_HOST=headless.adsister.com
 WC_CONSUMER_KEY=ck_...
 WC_CONSUMER_SECRET=cs_...
 
